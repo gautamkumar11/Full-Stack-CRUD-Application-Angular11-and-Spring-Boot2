@@ -78,7 +78,7 @@
           </button>
         </div>
         <div class="modal-body">
-            <form #addForm="ngForm" (ngSubmit)="onAddEmployee(addForm)">
+            <form #addForm="ngForm" (ngSubmit)="onAddEmployee(addForm); addForm.reset();">
                 <div class= "form-group">
                   <label for="name">Name </label>
                   <input type = "text" 
@@ -140,7 +140,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal"  aria-hidden="true">Close</button>
-                  <button type="submit" [disabled]="addForm.invalid" class="btn btn-primary">Save changes</button>
+                  <button type="submit" [disabled]="addForm.invalid" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
