@@ -18,6 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 import in.sts.employeemanager.model.Employee;
 import in.sts.employeemanager.service.EmployeeService;
 
+/**
+ * API end points to manage Employee
+ *
+ * @author Gautam Kumar
+ */
 @RestController
 @RequestMapping("/employee")
 //@CrossOrigin(origins = "http://localhost:4200")
@@ -28,24 +33,53 @@ public class EmployeeResource {
 		this.employeeService = employeeService;
 	}
 	
+	/*
+	 * This API fetch all the employee list
+	 * 
+	 * @return
+	 */	
 	@GetMapping("/all")
 	public ResponseEntity<List<Employee>> getAllEmployees(){
 		List<Employee> employees = employeeService.findAllEmployees();
 		return new ResponseEntity<>(employees, HttpStatus.OK);
 	}
 	
+	
+	/*
+	 * This API fetch Employee details by Id
+	 * 
+	 * @param id
+	 * 
+	 * @return
+	 */
 	@GetMapping("find/{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Long id){
 		Employee employee = employeeService.findEmployeeById(id);
 		return new ResponseEntity<>(employee, HttpStatus.OK);
 	}
 	
+	
+	/*
+	 * This API adds new employee object
+	 * 
+	 * @param employee
+	 * 
+	 * @return
+	 */	
 	@PostMapping("/add")
 	public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee){
 		Employee newEmployee = employeeService.addEmployee(employee);
 		return new ResponseEntity<>(newEmployee, HttpStatus.OK);
 	}
 	
+	
+	/*
+	 * This API updates the employee object
+	 * 
+	 * @param employee
+	 * 
+	 * @return
+	 */	
 	@PutMapping("/update")
 	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee)
 	{
@@ -53,6 +87,12 @@ public class EmployeeResource {
 		return new ResponseEntity<>(updateEmployee, HttpStatus.OK);
 	}
 	
+	
+	/*
+	 * This API deletes employee object
+	 * 
+	 * @param id
+	 */	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id)
 	{

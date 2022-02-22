@@ -8,6 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/*
+ * employee details entity
+ * 
+ *  @author Gautam Kumar
+ */
 @Entity
 public class Employee implements Serializable {
 	
