@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import in.sts.employeemanager.model.Employee;
 import in.sts.employeemanager.service.EmployeeService;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * API end points to manage Employee
@@ -38,6 +39,7 @@ public class EmployeeResource {
 	 * 
 	 * @return
 	 */	
+	@ApiOperation("View all Employees Details")
 	@GetMapping("/all")
 	public ResponseEntity<List<Employee>> getAllEmployees(){
 		List<Employee> employees = employeeService.findAllEmployees();
@@ -52,6 +54,7 @@ public class EmployeeResource {
 	 * 
 	 * @return
 	 */
+	@ApiOperation("View employee details by Id")
 	@GetMapping("find/{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Long id){
 		Employee employee = employeeService.findEmployeeById(id);
@@ -66,6 +69,7 @@ public class EmployeeResource {
 	 * 
 	 * @return
 	 */	
+	@ApiOperation("Add new employee to register")
 	@PostMapping("/add")
 	public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee){
 		Employee newEmployee = employeeService.addEmployee(employee);
@@ -80,6 +84,7 @@ public class EmployeeResource {
 	 * 
 	 * @return
 	 */	
+	@ApiOperation("Update Employee details")
 	@PutMapping("/update")
 	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee)
 	{
@@ -93,6 +98,7 @@ public class EmployeeResource {
 	 * 
 	 * @param id
 	 */	
+	@ApiOperation("Delete Employee by Id")
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id)
 	{
